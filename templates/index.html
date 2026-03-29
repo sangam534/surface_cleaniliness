@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Table Cleanliness Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glass-bg"></div>
+    <div class="app-container">
+        <header class="header">
+            <h1>Sparkle<span class="highlight">Vision</span> AI</h1>
+            <p>Smart Table Surface Assessment</p>
+        </header>
+
+        <main class="main-content">
+            <section class="upload-section" id="upload-section">
+                <div class="drop-zone" id="drop-zone">
+                    <div class="drop-content">
+                        <div class="upload-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                        </div>
+                        <h3>Upload Table Image</h3>
+                        <p>Drag & drop or <span class="browse">browse files</span></p>
+                        <p class="file-hint">Supports PNG, JPG, JPEG, WEBP</p>
+                    </div>
+                    <input type="file" id="file-input" accept="image/png, image/jpeg, image/jpg, image/webp" hidden>
+                </div>
+
+                <div class="controls">
+                    <div class="threshold-slider-container">
+                        <label for="threshold">Strictness Rating (<span id="threshold-val">95</span>%)</label>
+                        <input type="range" id="threshold" min="50" max="100" value="95" class="slider">
+                        <small>Higher value requires a cleaner surface to pass</small>
+                    </div>
+                    <button id="analyze-btn" class="btn primary-btn" disabled>
+                        <span>Analyze Surface</span>
+                        <div class="spinner" id="analyze-spinner"></div>
+                    </button>
+                </div>
+            </section>
+
+            <section class="result-section hidden" id="result-section">
+                <div class="result-card">
+                    <div class="result-header">
+                        <h2>Assessment Dashboard</h2>
+                        <button class="btn secondary-btn" id="reset-btn">New Image</button>
+                    </div>
+
+                    <div class="result-grid">
+                        <div class="image-preview">
+                            <div class="image-wrapper">
+                                <img id="output-image" src="" alt="Analyzed table surface">
+                                <div class="scan-line"></div>
+                            </div>
+                        </div>
+
+                        <div class="stats-panel">
+                            <div class="score-card" id="status-card">
+                                <div class="score-ring">
+                                    <svg viewBox="0 0 36 36" class="circular-chart">
+                                        <path class="circle-bg"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle" id="score-circle" stroke-dasharray="0, 100"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    </svg>
+                                    <div class="score-text">
+                                        <span id="score-value">0</span><span class="percent">%</span>
+                                    </div>
+                                </div>
+                                <h3 id="status-text">Processing...</h3>
+                            </div>
+
+                            <div class="metrics">
+                                <div class="metric">
+                                    <span class="metric-label">Objects/Spills Detected</span>
+                                    <span class="metric-value indicator-dot" id="anomalies-indicator">Analyzed</span>
+                                </div>
+                                <div class="metric">
+                                    <span class="metric-label">Action Required</span>
+                                    <span class="metric-value" id="action-text">Determining...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast" class="toast">
+        <div class="toast-content" id="toast-message">An error occurred</div>
+    </div>
+
+    <script type="module" src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+
+</html>
