@@ -1,8 +1,8 @@
-# Table_Cleanliness_Detector
-This software will analyze images or video of a table surface, detect anomalies (like food wastage, spills, or dirt), calculate a cleanliness percentage, and classify the table as "Clean" or "Dirty".
+# surface_Cleanliness_Detector
+This software will analyze images or video of any surface, detect anomalies (like food wastage, spills, or dirt), calculate a cleanliness percentage, and classify the surface as "Clean" or "Dirty".
 
-AI-Powered Table Cleanliness Detector
-Welcome to the Table Cleanliness Detector! This project harnesses the power of machine learning and computer vision to determine the state of a table—whether it's pristine and ready for use, or cluttered and in need of a cleanup. This tool is ideal for fast-paced environments like cafeterias, co-working spaces, or even just keeping your home desk organized.
+AI-Powered surface Cleanliness Detector
+Welcome to the surface Cleanliness Detector! This project harnesses the power of machine learning and computer vision to determine the state of a table—whether it's pristine and ready for use, or cluttered and in need of a cleanup. This tool is ideal for fast-paced environments like cafeterias, co-working spaces, or even just keeping your home desk organized.
 
 What does this do?
 The system analyzes an image or a live video feed of a table surface and provides a real-time assessment, categorizing the table into distinct states (e.g., Clean, Slightly Cluttered, Dirty).
